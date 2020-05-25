@@ -1,0 +1,267 @@
+* {
+    padding: 0;    
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: silver;
+}
+
+a {
+    text-decoration: none;    
+}
+ul {
+    list-style: none;
+}
+
+
+header {
+    background: linear-gradient(180deg, rgb(36, 36, 36), rgb(51, 50, 50) 70%);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid rgb(36, 36, 36);
+}
+
+
+.navbar {
+    background: linear-gradient(0deg, rgb(0, 0, 0), rgb(51, 50, 50) 70%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: none;
+    padding-right: 50%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 10px 30px;
+    font-size: 22px;
+    color: rgb(209, 208, 208);
+}
+
+.nav-links li a:hover {
+    background-color: rgb(83, 80, 80);
+    border-radius: 10px;
+    transition: all .18s;
+    color:#efe;
+}
+
+.togglebutton {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    top: 3px;
+    right: 3px;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    cursor: pointer;
+}
+
+.togglebutton .bar {
+    height: 3px;
+    width: 18px;
+    background-color: #c2c2c2;
+    margin-bottom: 4px;
+}
+
+.nav-links.responsive {
+    display: flex;
+}
+
+/* welcome */
+
+.welcome {
+    background-image: url(../img/welcome.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(19, 18, 18);
+}
+
+.welcome h1 {
+    font-size: 4rem;
+}
+.welcome h3 {
+    font-size: 2rem;
+}
+
+.welcome h1,h3 {
+    --color: rgb(117, 117, 117);
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px var(--color), 0 0 30px var(--color), 0 0 40px var(--color), 0 0 55px var(--color), 0 0 75px var(--color);
+}
+  
+.welcome .start {
+    padding: 7px 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+/* container */
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+}
+.container h1, p {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.container hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.container .error {
+    padding: 7px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    width: 60%;
+    opacity: 0.9;
+    margin: 15px auto;
+}
+.container .success {
+    padding: 7px 10px;
+    background-color: rgb(65, 177, 37);
+    color: white;
+    border-radius: 10px;
+    width: 60%;
+    opacity: 0.9;
+    margin: 15px auto;
+}
+
+
+.form-container {
+    padding: 16px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.form-container input, select {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+.form-container input:focus, select:focus  {
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-container .terms {
+    margin: 0 auto;
+    margin-bottom: 6px;
+}
+
+.form-container .form-button {
+    color: white;
+    background-color: rgb(98, 98, 98) ;
+    padding: 10px 15px;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+    opacity: 0.9;
+    
+}
+
+.form-container .form-button:hover {
+opacity: 1;
+}
+
+
+
+.form-container a {
+    color: dodgerblue;
+}
+.form-container .log-button {
+    background-color: rgb(76, 127, 175);
+    color: white;
+    padding: 4px 8px;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+    opacity: 0.9;
+}
+
+
+
+
+@media screen and (max-width:925px) {
+    header {
+        display: none;
+    }
+
+    .logo { 
+        display: block;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        background: linear-gradient(0deg, rgb(0, 0, 0), rgb(51, 50, 50) 70%);
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        display: none;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .nav-links li a {
+        padding: 10px;
+    }
+
+    .nav-links li a:hover {
+        background: transparent;
+    }
+    
+    .togglebutton {
+        display: flex;
+    }
+      
+    .form-container {
+       margin: 0px auto;
+       width: 95%;
+      }
+
+}
+
