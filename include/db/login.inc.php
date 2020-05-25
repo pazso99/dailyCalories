@@ -3,43 +3,52 @@
 if (isset($_POST["login-submit"])) {
     require "db.inc.php";
 
+    // POST adatok
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    if (empty($username) || empty($password)) {
+    if (empty($username) || empty($password)) { 
         header("Location: ../../login.php?err=emptyfields");
         exit();
+
     } else {
         $sql = "SELECT * FROM users WHERE username=?;";
 
-        $stmt = mysqli_stmt_init($conn);
+        $stmt = mysqli_stmt_init($conn);   
+
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../../login.php?err=sqlerror");
             exit();
+
         } else {
-            mysqli_stmt_bind_param($stmt, 's', $username);
+            mysqli_stmt_bind_param($stmt, 's', $username);  
             mysqli_stmt_execute($stmt);
 
             $result = mysqli_stmt_get_result($stmt);
-            if ($row = mysqli_fetch_assoc($result)) {
-                $pwdCheck = password_verify($password, $row["password"]);
-                if ($pwdCheck == false) {
+            if ($row = mysqli_fetch_assoc($result)) {   // user találva
+               
+                $pwdCheck = password_verify($password, $row["password"]);   // password check
+                
+                if ($pwdCheck == false) {   // rossz pw
                     header("Location: ../../login.php?err=wrongpassword");
                     exit();
+
                 } else if ($pwdCheck == true) {
-                    session_start();
+                    session_start();    // session start
                     
-                    foreach($row as $col => $data) {
+                    foreach($row as $col => $data) {    // session data
                         $_SESSION[$col] = $data;
                     }
-                    header("Location: ../../profile.php");
+
+                    header("Location: ../../profile.php");  // and go to the profile page
                     exit();
-                } else {
+
+                } else { // rossz pw
                     header("Location: ../../login.php?err=wrongpassword");
                     exit();
                 }
 
-            } else {
+            } else {    //nincs ilyen user
                 header("Location: ../../login.php?err=nouser");
                 exit();
             }

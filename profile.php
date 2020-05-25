@@ -10,15 +10,12 @@ if (isset($_SESSION['username'])) :
         <a class ="button" href="#">111111</a>
         <a class ="button" href="#">111111</a>
         <a class ="button" href="#">111111</a>
-
     </div>
 
     <div>
         <h1 class="profile-name"><?php echo $_SESSION['username']; ?>'s profile</h1>
     </div>
-
-    
-    
+ 
 </div>
 
 

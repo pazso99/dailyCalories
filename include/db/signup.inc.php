@@ -25,16 +25,20 @@ if(isset($_POST['signup-submit'])) {
 	} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // ROSSZ EMAIL
 		header("Location: ../../signup.php?err=invalidemail&username=".$username."&birth=".$birth."&gender=".$gender."&height=".$height."&weight=".$weight."&activity=".$activity."&ideal=".$ideal."&idealpercentage=".$idealPercentage);
 		exit();
+
 	} else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) { // ROSSZ USERNAME
 		header("Location: ../../signup.php?err=invalidusername&email=".$email."&birth=".$birth."&gender=".$gender."&height=".$height."&weight=".$weight."&activity=".$activity."&ideal=".$ideal."&idealpercentage=".$idealPercentage);
 		exit();
+
 	} else if ($password !== $repeatPassword || strlen($password) < 6 || !preg_match("/^[a-zA-Z0-9]*$/", $password)) { // ROSSZ JELSZÓ
 		header("Location: ../../signup.php?err=invalidpassword&username=".$username."&email=".$email."&birth=".$birth."&gender=".$gender."&height=".$height."&weight=".$weight."&activity=".$activity."&ideal=".$ideal."&idealpercentage=".$idealPercentage);
 		exit();
 		
-	} else {
+	} else { // jó form adatok
+
 		$sql = "SELECT id FROM users WHERE username=?";
 		$stmt = mysqli_stmt_init($conn);
+
 		if (!mysqli_stmt_prepare($stmt, $sql)) { // statement error kezelés
 			header("Location: ../../signup.php?err=sqlerror");
 			exit();
@@ -47,8 +51,7 @@ if(isset($_POST['signup-submit'])) {
 			if (mysqli_stmt_num_rows($stmt) > 0) { // van ilyen user a db-be
 				header("Location: ../../signup.php?err=usertaken&email=".$email."&birth=".$birth."&gender=".$gender."&height=".$height."&weight=".$weight."&activity=".$activity."&ideal=".$ideal."&idealpercentage=".$idealPercentage);
 				exit();
-			} else { 
-
+			} else { // nincs ilyen user a db-be
 
 				$sql = "INSERT INTO `users` (`username`, `email`, `password`, `birth`, `gender`, `height`, `weight`, `activity`, `ideal`, `idealpercentage`, `bmr`, `bmi`, `lbm`, `bodyfat`, `bodyfatpercentage`, `tdee`, `dailycalorie`, `dailyprotein`, `dailycarbs`, `dailyfat`, `dailysugar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -56,7 +59,7 @@ if(isset($_POST['signup-submit'])) {
 				if (!mysqli_stmt_prepare($stmt, $sql)) { // statement error kezelés
 					header("Location: ../../signup.php?err=sqlerror");
 					exit();
-				} else { // Minden sikeres
+				} else { // Minden sikeres, számítások, majd user hozzáadása a db-be
                     
                     function nFormat($number) {
                         return number_format($number, 2, '.', '');

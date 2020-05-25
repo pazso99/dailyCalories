@@ -344,9 +344,11 @@ header {
     .container {
         width: 100%;
     }
+    
     .container h1 {
         text-align: center;
     }
+
     .profile-table {
         width: 70%;
     }
