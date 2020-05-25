@@ -42,8 +42,8 @@
         } else {
             echo '
             <ul class="nav-links">
-                <li><a href="login.php">Log in</a></li>
-                <li><a href="signup.php">Sign up</a></li>
+                <li><a class="login-button" href="login.php">Log in</a></li>
+                <li><a class="signup-button" href="signup.php">Sign up</a></li>
             </ul> 
             ';
         }
