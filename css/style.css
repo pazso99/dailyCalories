@@ -233,7 +233,6 @@ header {
     opacity: 0.9;
 }
 
-
 /* Profile-table */
 .profile-table {
     font-family: arial, sans-serif;
@@ -252,7 +251,6 @@ header {
     text-align: center;
     padding: 8px;
 }
-
 
 .profile-table tr:nth-child(even) {
     background-color: #dddddd;
@@ -345,6 +343,9 @@ header {
     
     .container {
         width: 100%;
+    }
+    .container h1 {
+        text-align: center;
     }
     .profile-table {
         width: 70%;
