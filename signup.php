@@ -18,7 +18,7 @@
         }
     
         ?>
-        <hr>
+        <hr class="line">
 
         <form method="POST" action="include/db/signup.inc.php">
             <div class="form-container">
@@ -73,13 +73,13 @@
             <label for="ideal-percentage"><b>Enter ideal percentage</b></label>
             <input type="number" min="0" max="25" placeholder="Enter ideal percentage" name="ideal-percentage" value="<?php if (isset($_GET['idealpercentage'])) echo $_GET['idealpercentage']; ?>">
 
-            <hr>
+            <hr class="line">
             <p class="terms">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
         
             <input type="submit" class="form-button" name="signup-submit" value="Register">
 
-            <div class="form-container signin">
-                <p>Already have an account? <a class="log-button" href="login.php">Sign in</a></p>
+            <div class="form-container goto">
+                <p>Already have an account? </p><a class="log-button" href="login.php">Sign in</a>
             </div>
         
             

@@ -6,7 +6,7 @@
 
 body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: rgb(216, 216, 216);
+    background: #ebe8e8;
 }
 
 a {
@@ -17,6 +17,27 @@ ul {
 }
 
 
+/* Scrollbaar */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #d6d4d4;
+}
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #282b31;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #33363b;
+}
+
+/* Header */
 header {
     background-color: #282b31;
     padding: 8px;
@@ -26,7 +47,7 @@ header {
     border-bottom: 2px solid rgb(36, 36, 36);
 }
 
-
+/* Navbar */
 .navbar {
     background-color: #282a30;
     display: flex;
@@ -51,28 +72,27 @@ header {
     display: block;
     padding: 10px 30px;
     font-size: 22px;
-    color: rgb(209, 208, 208);
+    color: rgb(235, 235, 235);
 }
 
 .nav-links li a:hover {
     background-color: rgb(83, 80, 80);
-    border-radius: 10px;
+    border-radius: 6px;
     transition: all .18s;
     color:#efe;
 }
 
-.nav-links .login-button, .signup-button {
-    border: 1px solid black;
+.nav-links .login-button, .signup-button, .profile-button, .logout-button {
+    border: 2px solid black;
     border-radius: 6px;
     color: #fff;
 }
 
-
-.nav-links .signup-button {
+.nav-links .signup-button, .logout-button {
     margin-left: 10px;
     color: #fff;
+    border-color: #fff;
 }
-
 
 .togglebutton {
     position: absolute;
@@ -97,8 +117,7 @@ header {
     display: flex;
 }
 
-/* welcome */
-
+/* Welcome */
 .welcome {
     background-image: url(../img/welcome.jpg);
     background-position: center;
@@ -109,7 +128,6 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: rgb(19, 18, 18);
 }
 
 .welcome h1 {
@@ -118,13 +136,12 @@ header {
 .welcome h3 {
     font-size: 2rem;
 }
-
 .welcome h1,h3 {
-    --color: rgb(117, 117, 117);
-    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px var(--color), 0 0 30px var(--color), 0 0 40px var(--color), 0 0 55px var(--color), 0 0 75px var(--color);
+    --color: rgb(214, 211, 211);
+    text-shadow: 10px 0 15px #FFF, -10px 0 15px #FFF, 0 0 35px var(--color), 0 0 55px var(--color);
 }
   
-.welcome .start {
+.welcome .start-button {
     padding: 7px 10px;
     margin-top: 20px;
     background-color: transparent;
@@ -132,17 +149,17 @@ header {
     border: 1px solid white;
     border-radius: 20px;
 }
-/* container */
+.welcome .start-button:hover {
+    background-color: rgba(168, 164, 164, 0.2);
+}
 
+/* Container */
 .container {
     width: 50%;
     margin: 50px auto;
 }
-.container h1, p {
-    text-align: center;
-}
 
-.container hr {
+.container .line {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
@@ -157,7 +174,6 @@ header {
     margin: 15px auto;
 }
 
-
 .form-container {
     padding: 16px;
     background-color: white;
@@ -165,7 +181,6 @@ header {
     flex-direction: column;
     justify-content: center;
 }
-
 
 .form-container input, select {
     width: 100%;
@@ -182,38 +197,39 @@ header {
 }
 
 .form-container .terms {
-    margin: 0 auto;
-    margin-bottom: 6px;
+    margin: 10px auto;
 }
 
 .form-container .form-button {
     color: white;
-    background-color: rgb(98, 98, 98) ;
+    background-color: #323341 ;
     padding: 10px 15px;
     margin: 0 auto;
-    border: none;
     cursor: pointer;
     width: 60%;
     opacity: 0.9; 
 }
 
 .form-container .form-button:hover {
-opacity: 1;
+    opacity: 1;
 }
 
-
-
 .form-container a {
-    color: dodgerblue;
+    color: #097bee;
+}
+.goto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .form-container .log-button {
     background-color: rgb(76, 127, 175);
     color: white;
     padding: 4px 8px;
-    margin: 0 auto;
+    margin: 5px auto;
     border: none;
     cursor: pointer;
-    width: 60%;
     opacity: 0.9;
 }
 
@@ -307,14 +323,23 @@ opacity: 1;
 
     .nav-links li a:hover {
         background: transparent;
+        color: #bbb;
     }
     
     .togglebutton {
         display: flex;
     }
-      
+    
+    .nav-links .login-button, .profile-button, .logout-button {
+        border: none;
+    }
+    
+    .nav-links .signup-button, .logout-button {
+        margin: 0;
+    }
+
     .form-container {
-       margin: 0px auto;
+       margin: 0 auto;
        width: 95%;
     }
     

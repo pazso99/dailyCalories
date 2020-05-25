@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <div><a href="index.php"><img src="./img/logo.png" alt=""></a></div>
+        <div class="header-logo"><a href="index.php"><img src="./img/logo.png" alt=""></a></div>
     </header>
 
     <nav class="navbar">
@@ -35,8 +35,8 @@
         if (isset($_SESSION['username'])) {
             echo '
             <ul class="nav-links">
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="include/db/logout.inc.php">Logout</a></li>
+                <li><a class="profile-button" href="profile.php">Profile</a></li>
+                <li><a class="logout-button" href="include/db/logout.inc.php">Logout</a></li>
             </ul> 
             ';
         } else {

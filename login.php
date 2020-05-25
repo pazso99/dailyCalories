@@ -18,7 +18,7 @@
     
 ?>
 
-<hr>
+<hr class="line">
 
 <form method="POST" action="include/db/login.inc.php">    
     <div class="form-container">     
@@ -28,10 +28,10 @@
 
     <label for="password"><b>Password</b></label>
     <input type="text" placeholder="Enter Password" name="password">
-        
+    <hr class="line">
     <input type="submit" value="Login" name="login-submit" class="form-button">
-    <div class="form-container signin">
-        <p>Don't have an account? <a class="log-button" href="signup.php">Register</a></p>
+    <div class="form-container goto">
+        <p>Don't have an account?</p><a class="log-button" href="signup.php">Register</a>
     </div>
 
 
