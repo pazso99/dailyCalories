@@ -7,7 +7,7 @@ if (isset($_POST["login-submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    if (empty($username) || empty($password)) { 
+    if (isEmpty($username) || isEmpty($password)) { 
         header("Location: ../../login.php?err=emptyfields");
         exit();
 

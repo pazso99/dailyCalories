@@ -13,3 +13,12 @@ $conn = mysqli_connect($serverName, $userName, $password, $dbName);
 if (!$conn) {
 	die("Connect failed: " . mysqli_connect_error());
 }
+
+function isEmpty($var) {
+	if ($var == "") {
+		return true;
+	}
+	if ($var == 0) {
+		return false;
+	}
+}

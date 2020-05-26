@@ -14,7 +14,7 @@ if(isset($_POST['addfood-submit'])) {
     $calorie = $_POST['calorie'];
 	
 	// Form validation
-	if (empty($name) || empty($carbs) || empty($fiber) || empty($sugar) || empty($protein) || empty($fat) || empty($calorie)) { // ÜRES MEZŐK
+	if (isEmpty($name) || isEmpty($carbs) || isEmpty($fiber) || isEmpty($sugar) || isEmpty($protein) || isEmpty($fat) || isEmpty($calorie)) { // ÜRES MEZŐK
 		header("Location: ../../addfood.php?err=emptyfields&name=".$name."&carbs=".$carbs."&fiber=".$fiber."&sugar=".$sugar."&protein=".$protein."&fat=".$fat."&calorie=".$calorie);
         exit();
         

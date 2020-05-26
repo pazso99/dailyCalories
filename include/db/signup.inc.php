@@ -18,7 +18,7 @@ if(isset($_POST['signup-submit'])) {
 	$idealPercentage = $_POST['ideal-percentage'];
 	
 	// Form validation
-	if (empty($username) || empty($email) || empty($password) || empty($repeatPassword) || empty($birth) || $gender == "-1" || empty($height) || empty($weight) || $activity == "-1" || $ideal == "x" || $idealPercentage == "-1") { // ÜRES MEZŐK
+	if (isEmpty($username) || isEmpty($email) || isEmpty($password) || isEmpty($repeatPassword) || isEmpty($birth) || $gender == "-1" || isEmpty($height) || isEmpty($weight) || $activity == "-1" || $ideal == "x" || $idealPercentage == "-1") { // ÜRES MEZŐK
 		header("Location: ../../signup.php?err=emptyfields&username=".$username."&email=".$email."&birth=".$birth."&gender=".$gender."&height=".$height."&weight=".$weight."&activity=".$activity."&ideal=".$ideal."&idealpercentage=".$idealPercentage);
         exit();
         

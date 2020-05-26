@@ -8,7 +8,7 @@ if(isset($_POST['delete-submit'])) {
     $name = $_POST['name'];
 
 	// Form validation
-	if (empty($name)) { // ÜRES MEZŐK
+	if (isEmpty($name)) { // ÜRES MEZŐK
 		header("Location: ../../deletefood.php?err=emptyfield");
         exit();
         
