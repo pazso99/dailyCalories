@@ -26,7 +26,7 @@ if(isset($_POST['addfood-submit'])) {
 			exit();
 		} else {
 
-			mysqli_stmt_bind_param($stmt, "s", $username);  // parameteradás
+			mysqli_stmt_bind_param($stmt, "s", $name);  // parameteradás
 			mysqli_stmt_execute($stmt); // execute
 			mysqli_stmt_store_result($stmt);   // result store   
 			
@@ -42,10 +42,12 @@ if(isset($_POST['addfood-submit'])) {
 					header("Location: ../../addfood.php?err=sqlerror");
 					exit();
 				} else { // Minden sikeres
-                    
+					
+					$name = mb_strtolower($name);
+					
 					mysqli_stmt_bind_param($stmt, "sdddddi", $name, $carbs, $fiber, $sugar, $protein, $fat, $calorie);  //paraméter adás
 					mysqli_stmt_execute($stmt); // execute
-					header("Location: ../../addfood.php?added=success&name=".$name);
+					header("Location: ../../addfood.php?added=".$name);
 				    exit();
 				}
 			}

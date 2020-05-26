@@ -9,24 +9,42 @@ if (isset($_SESSION['username'])) :
     <?php
     if (isset($_GET['err'])) {
         switch($_GET['err']) {
-            case "emptyfields" : echo '<p class="error">Please fill in all the forms to create an account.</p>'; break;
-            case "invalidemail" : echo '<p class="error">Please enter a valid email.</p>'; break;
-            case "emptyfields" : echo '<p class="error">Please fill in all the forms to create an account.</p>'; break;
+            case "emptyfields" : echo '<p class="error">Please fill in all the forms to create a food.</p>'; break;
+            case "foodexist" : echo '<p class="error">Food already exist.</p>'; break;
+            case "sqlerror" : echo '<p class="error">Server error.</p>'; break;
         }
+    } else if (isset($_GET['added'])) {
+        echo '<p class="success"> ' . $_GET['added'] . ' successfully added to the database!</p>';
     }
     ?>
-    <hr>
+
+    <hr class="line">
 
     <form method="POST" action="include/db/addfood.inc.php">
         <div class="form-container">
         
-    
-        <label for="username"><b>Username</b></label>
-        <input type="number" placeholder="Enter Username" name="username" value="<?php if (isset($_GET['err'])) echo $_GET['username'];?>">
-    
+            <label for="name"><b>Food name</b></label>
+            <input type="text" placeholder="Enter Food name" name="name" value="<?php if (isset($_GET['name'])) echo $_GET['name'];?>">
 
+            <label for="calorie"><b>Calorie</b></label>
+            <input type="number" placeholder="Enter calorie" name="calorie" value="<?php if (isset($_GET['calorie'])) echo $_GET['calorie'];?>"> 
 
-        <input type="submit" class="form-button" name="addfood-submit" value="ADD">
+            <label for="carbs"><b>Carbs</b></label>
+            <input type="number" placeholder="Enter carbs" name="carbs" value="<?php if (isset($_GET['carbs'])) echo $_GET['carbs'];?>">       
+
+            <label for="fiber"><b>Fiber</b></label>
+            <input type="number" placeholder="Enter fiber" name="fiber" value="<?php if (isset($_GET['fiber'])) echo $_GET['fiber'];?>">   
+
+            <label for="sugar"><b>Sugar</b></label>
+            <input type="number" placeholder="Enter sugar" name="sugar" value="<?php if (isset($_GET['sugar'])) echo $_GET['sugar'];?>">
+    
+            <label for="protein"><b>Protein</b></label>
+            <input type="number" placeholder="Enter protein" name="protein" value="<?php if (isset($_GET['protein'])) echo $_GET['protein'];?>">       
+
+            <label for="fat"><b>Fat</b></label>
+            <input type="number" placeholder="Enter fat" name="fat" value="<?php if (isset($_GET['fat'])) echo $_GET['fat'];?>">   
+
+            <input type="submit" class="form-button" name="addfood-submit" value="ADD">
         </div>
     </form>
 </div>
