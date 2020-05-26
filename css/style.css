@@ -10,7 +10,8 @@ body{
 }
 
 a {
-    text-decoration: none;    
+    text-decoration: none;  
+    color: azure;  
 }
 ul {
     list-style: none;
@@ -117,6 +118,37 @@ header {
     display: flex;
 }
 
+/* Footer */
+.footer {
+    width: 100%;
+    padding: 80px 10px;
+    background-color: #1f2024;
+}
+.footer-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(235, 235, 235);
+}
+.footer-container h3{
+    width: 100%;
+    text-align: center;
+}
+.footer-logo, .footer-info, .footer-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 33%;
+    padding: 20px 35px;
+    margin: 0 20px;
+}
+.footer-links a{
+    color: #888888;
+    text-decoration: underline;
+}
 /* Welcome */
 .welcome {
     background-image: url(../img/welcome.jpg);
@@ -136,7 +168,7 @@ header {
 .welcome h3 {
     font-size: 2rem;
 }
-.welcome h1,h3 {
+.welcome h1, .welcome h3 {
     --color: rgb(214, 211, 211);
     text-shadow: 10px 0 15px #FFF, -10px 0 15px #FFF, 0 0 35px var(--color), 0 0 55px var(--color);
 }
@@ -393,6 +425,18 @@ header {
     
     .nav-links .signup-button, .logout-button {
         margin: 0;
+    }
+    .footer {
+        padding: 20px;
+    }
+    .footer-container {
+        padding: 20px;
+        width: 100%;
+        flex-direction: column;
+    }
+    .footer-logo, .footer-info, .footer-links {
+        width: 100%;
+        padding: 20px 0;
     }
 
     .form-container {
