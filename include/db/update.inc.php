@@ -12,7 +12,7 @@ if (isset($_POST["daily-submit"])) {
     $dailysugar = $_POST["ssssss"]; 
 
 
-    if (empty($dailycalorie) || empty($dailyprotein) || empty($dailycarbs) || empty($dailyfat) || empty($dailysugar)) {
+    if (isEmpty($dailycalorie) || isEmpty($dailyprotein) || isEmpty($dailycarbs) || isEmpty($dailyfat) || isEmpty($dailysugar)) {
         header();
         exit();
     } else {
