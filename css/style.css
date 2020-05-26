@@ -159,6 +159,10 @@ header {
     margin: 50px auto;
 }
 
+.container h1 {
+    text-align: center;
+}
+
 .container .line {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
@@ -167,6 +171,16 @@ header {
 .container .error {
     padding: 7px 10px;
     background-color: red;
+    color: white;
+    border-radius: 10px;
+    width: 60%;
+    opacity: 0.9;
+    margin: 15px auto;
+}
+
+.container .success {
+    padding: 7px 10px;
+    background-color: rgb(9, 114, 0);
     color: white;
     border-radius: 10px;
     width: 60%;
@@ -343,10 +357,6 @@ header {
     
     .container {
         width: 100%;
-    }
-    
-    .container h1 {
-        text-align: center;
     }
 
     .profile-table {
