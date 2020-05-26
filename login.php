@@ -39,7 +39,7 @@
         </div>
     </div>
 </form>
-
+</div>
 <?php
     require 'include/footer.php';
 ?>
