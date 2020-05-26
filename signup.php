@@ -1,7 +1,7 @@
 <?php 
     require "include/header.php";
 ?>
-   <!--  <input type="text" name="image" id="image" value="<?php echo $_GET['file_name']; ?>"/> -->
+   
    <div class="container">
         <h1>Register</h1>
 
