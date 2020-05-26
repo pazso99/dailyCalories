@@ -4,6 +4,12 @@ if (isset($_SESSION['username'])) :
 ?>
 
 <div class="container">
+    <div class="command-panel">
+        <a class ="button" href="./addfood.php">Add Food</a>
+        <a class ="button" href="./deletefood.php">Delete Food</a>
+        <a class ="button" href="./listfood.php">Food data</a>
+        <a class ="button" href="#">111111</a>
+    </div>
     <h1>Add Food</h1>
 
     <?php
