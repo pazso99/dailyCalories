@@ -28,7 +28,6 @@ if(isset($_POST['addfood-submit'])) {
 
 			mysqli_stmt_bind_param($stmt, "s", $name);  // parameteradás
 			mysqli_stmt_execute($stmt); // execute
-			mysqli_stmt_store_result($stmt);   // result store   
 			
 			if (mysqli_stmt_num_rows($stmt) > 0) { // található a db-be
 				header("Location: ../../addfood.php?err=foodexist&name=".$name."&carbs=".$carbs."&fiber=".$fiber."&sugar=".$sugar."&protein=".$protein."&fat=".$fat."&calorie=".$calorie);
