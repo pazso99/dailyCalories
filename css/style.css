@@ -278,7 +278,18 @@ header {
     cursor: pointer;
     opacity: 0.9;
 }
-
+.done-button {
+    color: white;
+    background-color: #420600 ;
+    padding: 10px 15px;
+    margin: 0 auto;
+    cursor: pointer;
+    width: 40%;
+}
+.done-button:hover {
+    background-color: #6b0900;
+    transition: all .2s;
+}
 /* Profile-table */
 .profile-table {
     font-family: arial, sans-serif;
@@ -286,7 +297,7 @@ header {
     width: 60%;
     border: 1px solid #aaa;
     margin: 0 auto;
-    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .container .profile-name {
@@ -379,7 +390,38 @@ header {
     font-size: 18px;
     font-weight: 600;
 }
-
+.daily {
+    font-size: 19px;
+    color: #0e1022;
+    font-weight: 500;
+}
+.eaten-foods {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.eaten-foods .food {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+.food .food-info {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+}
+.food .food-info{
+    padding: 20px;
+}
+.food .food-date {
+    font-size: 18px;
+    font-weight: 600;
+}
 @media screen and (max-width:925px) {
     header {
         display: none;
