@@ -1,8 +1,4 @@
 <?php 
-function add() {
-
-}
-
 if (isset($_POST["eatfood-submit"])) {
     require "db.inc.php";
     session_start();
@@ -10,7 +6,7 @@ if (isset($_POST["eatfood-submit"])) {
     $userid = $_SESSION["id"];
     $foodname = $_POST["name"];
     $foodqty = $_POST["quantity"];
-    $date = date("Y-m-d H:i");
+    $date = date("Y-m-d H:i:s");
 
     if (empty($foodqty)) { 
         header("Location: ../../dailycalories.php?err=emptyfield");
@@ -36,7 +32,7 @@ if (isset($_POST["eatfood-submit"])) {
             $foodcalorie = $row['calorie'];
         }
 
-        if ($foodquantity == "100g") {
+        if ($foodquantity == "g") {
             $eatencalorie = $foodcalorie * ($foodqty / 100);
             $eatenprotein = $foodprotein * ($foodqty / 100);
             $eatencarbs = $foodcarbs * ($foodqty / 100);
@@ -67,7 +63,7 @@ if (isset($_POST["eatfood-submit"])) {
 			header("Location: ../../dailycalories.php?err=sqlerror");
 			exit();
 		} else {
-			$foodeaten = mb_strtolower($foodname)."-".$foodqty;
+			$foodeaten = mb_strtolower($foodname)."-".$foodqty."-".$foodquantity;
 					
 			mysqli_stmt_bind_param($stmt, "sis", $date, $userid, $foodeaten);
 			mysqli_stmt_execute($stmt); 
@@ -80,6 +76,8 @@ if (isset($_POST["eatfood-submit"])) {
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
 
+} else if (isset($_POST["doneeat-submit"])) {
+    echo "XYDX";
 } else {
     header("Location: ../../dailycalories.php");
     exit();
