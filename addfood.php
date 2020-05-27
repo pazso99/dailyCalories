@@ -31,7 +31,7 @@ if (isset($_SESSION['username'])) :
 
             <label for="quantity"><b>Choose food quantity</b></label>
             <select id="quantity" name="quantity">
-                    <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == '100g'){echo("selected");}?> value="100g">100g</option>
+                    <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == 'g'){echo("selected");}?> value="g">100g</option>
                     <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == 'db'){echo("selected");}?> value="db">db</option>
                     <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == 'pohár'){echo("selected");}?> value="pohár">pohár</option>
             </select>
