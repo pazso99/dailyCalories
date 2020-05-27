@@ -39,6 +39,10 @@ if (isset($_POST["login-submit"])) {
                     foreach($row as $col => $data) {    // session data
                         $_SESSION[$col] = $data;
                     }
+                    $_SESSION['f_dailycalorie'] = $row['dailycalorie'];
+                    $_SESSION['f_dailycarbs'] = $row['dailycarbs'];
+                    $_SESSION['f_dailyprotein'] = $row['dailyprotein'];
+                    $_SESSION['f_dailyfat'] = $row['dailyfat'];
 
                     header("Location: ../../profile.php");  // and go to the profile page
                     exit();

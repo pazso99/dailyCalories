@@ -341,21 +341,24 @@ header {
 }
 
 /* Formatting search box */
-.list-food{
+.list-food, .add-food{
     width: 100%;
     font-size: 14px;
 }
-.list-food input[type="text"]{
+.list-food input[type="text"], .add-food input[type="text"]{
     height: 32px;
+    width: 100%;
     padding: 5px 10px;
     border: 1px solid #CCCCCC;
     font-size: 14px;
 }
-.list-food .result {
+.result {
     min-height: 400px;
-}
-.list-food input[type="text"], .result{
     width: 100%;
+    margin-bottom: 15px;
+}
+.add-food .result {
+    min-height: 100px;
 }
 /* Formatting result items */
 .result .item{

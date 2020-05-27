@@ -43,19 +43,19 @@ if (isset($_SESSION['username'])) :
             <input type="number" placeholder="Enter calorie" name="calorie" value="<?php if (isset($_GET['calorie'])) echo $_GET['calorie'];?>"> 
 
             <label for="carbs"><b>Carbs</b></label>
-            <input type="number" placeholder="Enter carbs" name="carbs" value="<?php if (isset($_GET['carbs'])) echo $_GET['carbs'];?>">       
+            <input type="number" step="0.01" placeholder="Enter carbs" name="carbs" value="<?php if (isset($_GET['carbs'])) echo $_GET['carbs'];?>">       
 
             <label for="fiber"><b>Fiber</b></label>
-            <input type="number" placeholder="Enter fiber" name="fiber" value="<?php if (isset($_GET['fiber'])) echo $_GET['fiber'];?>">   
+            <input type="number" step="0.01" placeholder="Enter fiber" name="fiber" value="<?php if (isset($_GET['fiber'])) echo $_GET['fiber'];?>">   
 
             <label for="sugar"><b>Sugar</b></label>
-            <input type="number" placeholder="Enter sugar" name="sugar" value="<?php if (isset($_GET['sugar'])) echo $_GET['sugar'];?>">
+            <input type="number" step="0.01" placeholder="Enter sugar" name="sugar" value="<?php if (isset($_GET['sugar'])) echo $_GET['sugar'];?>">
     
             <label for="protein"><b>Protein</b></label>
-            <input type="number" placeholder="Enter protein" name="protein" value="<?php if (isset($_GET['protein'])) echo $_GET['protein'];?>">       
+            <input type="number" step="0.01" placeholder="Enter protein" name="protein" value="<?php if (isset($_GET['protein'])) echo $_GET['protein'];?>">       
 
             <label for="fat"><b>Fat</b></label>
-            <input type="number" placeholder="Enter fat" name="fat" value="<?php if (isset($_GET['fat'])) echo $_GET['fat'];?>">   
+            <input type="number" step="0.01" placeholder="Enter fat" name="fat" value="<?php if (isset($_GET['fat'])) echo $_GET['fat'];?>">   
 
             <input type="submit" class="form-button" name="addfood-submit" value="ADD">
         </div>

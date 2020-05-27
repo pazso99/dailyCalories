@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="script/responsive.js" defer></script>
     <script src="script/search.js" defer></script>
+    <script src="script/addFood.js" defer></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
 
         <ul class="nav-links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="#">DailyCalories</a></li>
+            <li><a href="dailycalories.php">DailyCalories</a></li>
             <li><a href="#">Recipes</a></li>
             <li><a href="#">Workouts</a></li>
         </ul>

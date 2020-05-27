@@ -53,7 +53,7 @@ if(isset($_POST['signup-submit'])) {
 				exit();
 			} else { // nincs ilyen user a db-be
 
-				$sql = "INSERT INTO `users` (`username`, `email`, `password`, `birth`, `gender`, `height`, `weight`, `activity`, `ideal`, `idealpercentage`, `bmr`, `bmi`, `lbm`, `bodyfat`, `bodyfatpercentage`, `tdee`, `dailycalorie`, `dailyprotein`, `dailycarbs`, `dailyfat`, `dailysugar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+				$sql = "INSERT INTO `users` (`username`, `email`, `password`, `birth`, `gender`, `height`, `weight`, `activity`, `ideal`, `idealpercentage`, `bmr`, `bmi`, `lbm`, `bodyfat`, `bodyfatpercentage`, `tdee`, `dailycalorie`, `dailyprotein`, `dailycarbs`, `dailyfat`, `dailyfiber`, `dailysugar`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 				$stmt = mysqli_stmt_init($conn);
 				if (!mysqli_stmt_prepare($stmt, $sql)) { // statement error kezelés
@@ -91,18 +91,24 @@ if(isset($_POST['signup-submit'])) {
 					$dailyFat = ($dailyCalorie * 0.25) / 8.8;
 					$dailyCarbs = ($dailyCalorie * 0.4) / 4.1;
 					$dailySugar = 0;
+					$dailyFiber = 0;
 					
 					$bmr = nFormat($bmr);
 					$bmi = nFormat($bmi);
 					$lbm = nFormat($lbm);
 					$bodyfatweight = nFormat($bodyfatweight);
 					$bodyfatpercentage = nFormat($bodyfatpercentage);
+					$dailyFiber = nFormat($dailyFiber);
+					$dailyCarbs = nFormat($dailyCarbs);
+					$dailyProtein = nFormat($dailyProtein);
+					$dailySugar = nFormat($dailySugar);
+					$dailyFat = nFormat($dailyFat);
 
 					//password hash
 					$hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
 
-					mysqli_stmt_bind_param($stmt, "sssssidssidddddiiiiii", $username, $email, $hashedPwd, $birth, $gender, $height, $weight, $activity, $ideal, $idealPercentage, $bmr, $bmi, $lbm, $bodyfatweight, $bodyfatpercentage, $tdee, $dailyCalorie, $dailyProtein, $dailyCarbs, $dailyFat, $dailySugar);
+					mysqli_stmt_bind_param($stmt, "sssssidssidddddiiddddd", $username, $email, $hashedPwd, $birth, $gender, $height, $weight, $activity, $ideal, $idealPercentage, $bmr, $bmi, $lbm, $bodyfatweight, $bodyfatpercentage, $tdee, $dailyCalorie, $dailyProtein, $dailyCarbs, $dailyFat, $dailyFiber,$dailySugar);
 					mysqli_stmt_execute($stmt);
 					header("Location: ../../login.php?signup=success");
 				exit();
