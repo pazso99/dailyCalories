@@ -341,20 +341,20 @@ header {
 }
 
 /* Formatting search box */
-.search-box{
+.list-food{
     width: 100%;
     font-size: 14px;
 }
-.search-box input[type="text"]{
+.list-food input[type="text"]{
     height: 32px;
     padding: 5px 10px;
     border: 1px solid #CCCCCC;
     font-size: 14px;
 }
-.search-box .result {
+.list-food .result {
     min-height: 400px;
 }
-.search-box input[type="text"], .result{
+.list-food input[type="text"], .result{
     width: 100%;
 }
 /* Formatting result items */

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.search-box input[type="text"]').on("keyup", function(){
+    $('.list-food input[type="text"]').on("keyup", function(){
         /* Get input value on change */
         let inputVal = $(this).val();
         let resultDropdown = $(this).siblings(".result");

@@ -14,7 +14,7 @@ if (isset($_SESSION['username'])) :
 
     <hr class="line">
     
-    <div class="search-box">
+    <div class="list-food">
         <input type="text" autocomplete="off" placeholder="Search food..." />
         <div class="result">
         
