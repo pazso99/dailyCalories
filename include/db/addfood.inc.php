@@ -11,11 +11,12 @@ if(isset($_POST['addfood-submit'])) {
     $sugar = $_POST['sugar'];
     $protein = $_POST['protein'];
 	$fat = $_POST['fat'];
-    $calorie = $_POST['calorie'];
+	$calorie = $_POST['calorie'];
+	$quantity = $_POST['quantity'];
 	
 	// Form validation
 	if (isEmpty($name) || isEmpty($carbs) || isEmpty($fiber) || isEmpty($sugar) || isEmpty($protein) || isEmpty($fat) || isEmpty($calorie)) { // ÜRES MEZŐK
-		header("Location: ../../addfood.php?err=emptyfields&name=".$name."&carbs=".$carbs."&fiber=".$fiber."&sugar=".$sugar."&protein=".$protein."&fat=".$fat."&calorie=".$calorie);
+		header("Location: ../../addfood.php?err=emptyfields&name=".$name."&quantity=".$quantity."&carbs=".$carbs."&fiber=".$fiber."&sugar=".$sugar."&protein=".$protein."&fat=".$fat."&calorie=".$calorie);
         exit();
         
 	} else {
@@ -30,11 +31,11 @@ if(isset($_POST['addfood-submit'])) {
 			mysqli_stmt_execute($stmt); // execute
 			
 			if (mysqli_stmt_num_rows($stmt) > 0) { // található a db-be
-				header("Location: ../../addfood.php?err=foodexist&name=".$name."&carbs=".$carbs."&fiber=".$fiber."&sugar=".$sugar."&protein=".$protein."&fat=".$fat."&calorie=".$calorie);
+				header("Location: ../../addfood.php?err=foodexist&name=".$name."&quantity=".$quantity."&carbs=".$carbs."&fiber=".$fiber."&sugar=".$sugar."&protein=".$protein."&fat=".$fat."&calorie=".$calorie);
 				exit();
 			} else {  // nincs ilyen food
 
-				$sql = "INSERT INTO `foods` (`name`, `carbs`, `fiber`, `sugar`, `protein`, `fat`, `calorie`) VALUES (?,?,?,?,?,?,?);";
+				$sql = "INSERT INTO `foods` (`name`, `quantity`, `carbs`, `fiber`, `sugar`, `protein`, `fat`, `calorie`) VALUES (?,?,?,?,?,?,?,?);";
 
 				$stmt = mysqli_stmt_init($conn);  //statement init
 				if (!mysqli_stmt_prepare($stmt, $sql)) { // statement error kezelés
@@ -44,7 +45,7 @@ if(isset($_POST['addfood-submit'])) {
 					
 					$name = mb_strtolower($name);
 					
-					mysqli_stmt_bind_param($stmt, "sdddddi", $name, $carbs, $fiber, $sugar, $protein, $fat, $calorie);  //paraméter adás
+					mysqli_stmt_bind_param($stmt, "ssdddddi", $name, $quantity, $carbs, $fiber, $sugar, $protein, $fat, $calorie);  //paraméter adás
 					mysqli_stmt_execute($stmt); // execute
 					header("Location: ../../addfood.php?added=".$name);
 				    exit();

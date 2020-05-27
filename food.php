@@ -30,6 +30,13 @@ if (isset($_SESSION['username']) && ( isset($_GET['id']) || isset($_GET['updated
             <label for="id"><b>Food ID</b></label>
             <input readonly type="number" name="id" value="<?php if (isset($_GET['id'])) echo $_GET['id'];?>">
 
+            <label for="quantity"><b>Choose food quantity</b></label>
+            <select id="quantity" name="quantity">
+                    <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == '100g'){echo("selected");}?> value="100g">100g</option>
+                    <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == 'db'){echo("selected");}?> value="db">db</option>
+                    <option <?php if(isset($_GET['quantity']) && $_GET['quantity'] == 'pohár'){echo("selected");}?> value="pohár">pohár</option>
+            </select>
+
             <label for="name"><b>Food name</b></label>
             <input type="text" placeholder="Enter Food name" name="name" value="<?php if (isset($_GET['name'])) echo $_GET['name'];?>">
 

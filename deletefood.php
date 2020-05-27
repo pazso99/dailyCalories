@@ -3,7 +3,7 @@ require "include/header.php";
 if (isset($_SESSION['username'])) : 
 ?>
 
-<div class="container">
+<div class="container" style="min-height: 550px;">
     <div class="command-panel">
         <a class ="button" href="./addfood.php">Add Food</a>
         <a class ="button" href="./deletefood.php">Delete Food</a>
