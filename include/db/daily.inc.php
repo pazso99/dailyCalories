@@ -2,6 +2,8 @@
 if (isset($_POST["eatfood-submit"])) {
     require "db.inc.php";
     session_start();
+
+    if ($_SESSION['caneat'] == 'true') {
     // POST adatok
     $userid = $_SESSION["id"];
     $foodname = $_POST["name"];
@@ -66,7 +68,7 @@ if (isset($_POST["eatfood-submit"])) {
 			$foodeaten = mb_strtolower($foodname)."-".$foodqty."-".$foodquantity;
 					
 			mysqli_stmt_bind_param($stmt, "sis", $date, $userid, $foodeaten);
-			mysqli_stmt_execute($stmt); 
+            mysqli_stmt_execute($stmt);
 			header("Location: ../../dailycalories.php?added=".$foodname);
 			exit();
 		}  
@@ -75,10 +77,17 @@ if (isset($_POST["eatfood-submit"])) {
 	// Lezárások
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
+    } else {
+        header("Location: ../../dailycalories.php?now=canteat");
+        exit();
+    }
 
 } else if (isset($_POST["doneeat-submit"])) {
-    echo "XYDX";
+    session_start();
+    $_SESSION['caneat'] = 'false';
+    header("Location: ../../dailycalories.php?now=canteat");
+    exit();
 } else {
-    header("Location: ../../dailycalories.php");
+    header("Location: ../../dailycalories.php?now=canteat");
     exit();
 }

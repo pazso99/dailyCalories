@@ -19,6 +19,8 @@ if (isset($_SESSION['username'])) :
         }
     } else if (isset($_GET['added'])) {
         echo '<p class="success"> ' . $_GET['added'] . ' successfully eated!</p>';
+    } else if (isset($_GET['now'])) {
+        echo '<p class="error">You cant eat more today!</p>';
     }
     ?>
     <h2>Add food from above</h2>

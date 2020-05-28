@@ -43,6 +43,7 @@ if (isset($_POST["login-submit"])) {
                     $_SESSION['f_dailycarbs'] = $row['dailycarbs'];
                     $_SESSION['f_dailyprotein'] = $row['dailyprotein'];
                     $_SESSION['f_dailyfat'] = $row['dailyfat'];
+                    $_SESSION['caneat'] = 'true';
 
                     header("Location: ../../profile.php");  // and go to the profile page
                     exit();
