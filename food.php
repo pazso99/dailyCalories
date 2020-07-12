@@ -1,5 +1,6 @@
 <?php 
 require "include/header.php";
+// ha van id vagy updated food
 if (isset($_SESSION['username']) && ( isset($_GET['id']) || isset($_GET['updated'])) ) : 
 ?>
 
@@ -13,11 +14,13 @@ if (isset($_SESSION['username']) && ( isset($_GET['id']) || isset($_GET['updated
     <h1>Edit Food</h1>
 
     <?php
+    // error display
     if (isset($_GET['err'])) {
         switch($_GET['err']) {
             case "emptyfields" : echo '<p class="error">Please fill in all the forms to update the food.</p>'; break;
             case "sqlerror" : echo '<p class="error">Server error.</p>'; break;
         }
+    // sikeres update
     } else if (isset($_GET['updated'])) {
         echo '<p class="success"> ' . $_GET['updated'] . ' successfully updated!</p>';
     }

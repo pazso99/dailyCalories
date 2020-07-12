@@ -21,8 +21,8 @@ if(isset($_POST['updatefood-submit'])) {
         
 	} else {
 		$sql = "UPDATE `foods` SET `name` = ?, `quantity` = ?, `carbs` = ?, `fiber` = ?, `sugar` = ?, `protein` = ?, `fat` = ?, `calorie` = ? WHERE id = ?;"; 
-		$stmt = mysqli_stmt_init($conn);    //statement init
-		if (!mysqli_stmt_prepare($stmt, $sql)) { // statement prepare kezelés
+		$stmt = mysqli_stmt_init($conn);  
+		if (!mysqli_stmt_prepare($stmt, $sql)) { 
 			header("Location: ../../food.php?err=sqlerror");
 			exit();
 		} else {

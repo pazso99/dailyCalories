@@ -44,19 +44,19 @@ if (isset($_SESSION['username'])) :
         </tr>
         <tr>
             <th><b>Dailycalorie: </b></th>
-            <td><?php echo "<span class='daily'>" . $_SESSION['dailycalorie'] . " kcal </span>/ " . $_SESSION['f_dailycalorie']; ?> kcal</td>
+            <td><?php echo "<span class='daily'>" . $_SESSION['s_dailycalorie'] . " kcal </span>/ " . $_SESSION['dailycalorie']; ?> kcal</td>
         </tr>
         <tr>
             <th><b>Dailyprotein: </b></th>
-            <td><?php echo "<span class='daily'>" . $_SESSION['dailyprotein'] . " g </span>/ " . $_SESSION['f_dailyprotein']; ?> g</td>
+            <td><?php echo "<span class='daily'>" . $_SESSION['s_dailyprotein'] . " g </span>/ " . $_SESSION['dailyprotein']; ?> g</td>
         </tr>
         <tr>
             <th><b>Dailycarbs: </b></th>
-            <td><?php echo "<span class='daily'>" . $_SESSION['dailycarbs'] . " g </span>/ " . $_SESSION['f_dailycarbs']; ?> g</td>
+            <td><?php echo "<span class='daily'>" . $_SESSION['s_dailycarbs'] . " g </span>/ " . $_SESSION['dailycarbs']; ?> g</td>
         </tr>
         <tr>
             <th><b>Dailyfat: </b></th>
-            <td><?php echo "<span class='daily'>" . $_SESSION['dailyfat'] . " g </span>/ " . $_SESSION['f_dailyfat']; ?> g</td>
+            <td><?php echo "<span class='daily'>" . $_SESSION['s_dailyfat'] . " g </span>/ " . $_SESSION['dailyfat']; ?> g</td>
         </tr>
         <tr>
             <th><b>Dailyfiber: </b></th>
@@ -71,6 +71,7 @@ if (isset($_SESSION['username'])) :
 
     <div class="eaten-foods">
     <?php
+    
         require "include/db/db.inc.php";
         $date = date("Y-m-d");
 
@@ -79,7 +80,7 @@ if (isset($_SESSION['username'])) :
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
                     $date = $row['date'];
-                    $foods = explode("-", $row['food.eaten']);
+                    $foods = explode("-", $row['food.eaten']);  // alma-200-g
                     $foodName = $foods[0];
                     $foodQty = $foods[1];
                     $foodQuantity = $foods[2];
@@ -91,7 +92,7 @@ if (isset($_SESSION['username'])) :
                     ';
                 }
             } else{
-                echo "No records matching your query were found.";
+                echo "You haven't eaten today";
             }
         } else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
@@ -112,7 +113,7 @@ else:
 
 <div class="container">
     <div>
-        <h1> Sorry, you have to logged in to use this page</h1>
+        <h1> Sorry, you have to be logged in to use this page</h1>
     </div>
     <hr class="line">
     <div class="welcome">

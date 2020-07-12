@@ -3,9 +3,10 @@
 ?>
    
    <div class="container">
-        <h1>Register</h1>
+        <h1>Sign up</h1>
 
         <?php
+        // error display
         if (isset($_GET['err'])) {
             switch($_GET['err']) {
                 case "emptyfields" : echo '<p class="error">Please fill in all the forms to create an account.</p>'; break;
@@ -19,7 +20,7 @@
         ?>
 
         <hr class="line">
-
+        
         <form method="POST" action="include/db/signup.inc.php">
             <div class="form-container">
         
@@ -51,7 +52,7 @@
                 <label for="weight"><b>Weight</b></label>
                 <input type="number" min="30" max="300" placeholder="Enter your weight (kg)" name="weight" value="<?php if (isset($_GET['err'])) echo $_GET['weight']; ?>">
 
-                <label for="activity"><b>Choose your activity:</b></label>
+                <label for="activity"><b>Choose your activity level:</b></label>
                 <select id="activity" name="activity">
                     <option <?php if(isset($_GET['activity']) && $_GET['activity'] == '-1'){echo("selected");}?> value="-1">Choose your activity level</option>
                     <option <?php if(isset($_GET['activity']) && $_GET['activity'] == '1.2'){echo("selected");}?> value="1.2">Sedentary</option>
@@ -61,7 +62,7 @@
                     <option <?php if(isset($_GET['activity']) && $_GET['activity'] == '1.9'){echo("selected");}?> value="1.9">2x/day</option>
                 </select>
 
-                <label for="ideal"><b>Choose your ideal thng:</b></label>
+                <label for="ideal"><b>Do you want to:</b></label>
                 <select id="ideal" name="ideal">
                     <option <?php if(isset($_GET['ideal']) && $_GET['ideal'] == 'x'){echo("selected");}?> value="x">Choose your ideal</option>
                     <option <?php if(isset($_GET['ideal']) && $_GET['ideal'] == '-1'){echo("selected");}?> value="-1">Lose weight</option>

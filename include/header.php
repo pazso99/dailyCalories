@@ -34,6 +34,7 @@
             <li><a href="#">Workouts</a></li>
         </ul>
 <?php
+        // ha bevan logolva - profile + logout
         if (isset($_SESSION['username'])) {
             echo '
             <ul class="nav-links">
@@ -41,7 +42,7 @@
                 <li><a class="logout-button" href="include/db/logout.inc.php">Logout</a></li>
             </ul> 
             ';
-        } else {
+        } else { // login + reg
             echo '
             <ul class="nav-links">
                 <li><a class="login-button" href="login.php">Log in</a></li>

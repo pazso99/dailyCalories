@@ -1,5 +1,7 @@
 <?php 
 require "include/header.php";
+// ha bevan jelentkezve, amugy elvisz indexbe
+// adatbázis interakciók
 if (isset($_SESSION['username'])) : 
 ?>
 
@@ -85,29 +87,31 @@ if (isset($_SESSION['username'])) :
             <th><b>Tdee: </b></th>
             <td><?php echo $_SESSION['tdee']; ?> kcal</td>
         </tr>
+    </table>  
+    <table class="profile-table" style="margin-top:20px;">
         <tr>
-            <th><b>Dailycalorie: </b></th>
-            <td><?php echo $_SESSION['dailycalorie'] . " kcal / " . $_SESSION['f_dailycalorie']; ?> kcal</td>
+            <th><b>Daily Calories: </b></th>
+            <td><?php echo $_SESSION['s_dailycalorie'] . " kcal / " . $_SESSION['dailycalorie']; ?> kcal</td>
         </tr>
         <tr>
-            <th><b>Dailyprotein: </b></th>
-            <td><?php echo $_SESSION['dailyprotein'] . " g / " . $_SESSION['f_dailyprotein']; ?> g</td>
+            <th><b>Daily Protein: </b></th>
+            <td><?php echo $_SESSION['s_dailyprotein'] . " g / " . $_SESSION['dailyprotein']; ?> g</td>
         </tr>
         <tr>
-            <th><b>Dailycarbs: </b></th>
-            <td><?php echo $_SESSION['dailycarbs'] . " g / " . $_SESSION['f_dailycarbs']; ?> g</td>
+            <th><b>Daily Carbohydrates: </b></th>
+            <td><?php echo $_SESSION['s_dailycarbs'] . " g / " . $_SESSION['dailycarbs']; ?> g</td>
         </tr>
         <tr>
-            <th><b>Dailyfat: </b></th>
-            <td><?php echo $_SESSION['dailyfat'] . " g / " . $_SESSION['f_dailyfat']; ?> g</td>
+            <th><b>Daily Fat: </b></th>
+            <td><?php echo $_SESSION['s_dailyfat'] . " g / " . $_SESSION['dailyfat']; ?> g</td>
         </tr>
         <tr>
-            <th><b>Dailyfiber: </b></th>
-            <td><?php echo $_SESSION['dailyfiber']; ?> g / 0 g</td>
+            <th><b>Daily Fiber: </b></th>
+            <td><?php echo $_SESSION['dailyfiber']; ?> g</td>
         </tr>
         <tr>
-            <th><b>Dailysugar: </b></th>
-            <td><?php echo $_SESSION['dailysugar']; ?> g / 0 g</td>
+            <th><b>Daily Sugar: </b></th>
+            <td><?php echo $_SESSION['dailysugar']; ?> g</td>
         </tr>
     </table>  
 </div>

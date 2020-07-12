@@ -14,30 +14,30 @@ if(isset($_POST['delete-submit'])) {
         
 	} else {
 		$sql = "SELECT id FROM foods WHERE name=?"; 
-		$stmt = mysqli_stmt_init($conn);    //statement init
-		if (!mysqli_stmt_prepare($stmt, $sql)) { // statement prepare kezelés
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
 			header("Location: ../../deletefood.php?err=sqlerror");
 			exit();
 		} else {
 
-			mysqli_stmt_bind_param($stmt, "s", $name);  // parameteradás
-			mysqli_stmt_execute($stmt); // execute
-			mysqli_stmt_store_result($stmt);   // result store   
+			mysqli_stmt_bind_param($stmt, "s", $name);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
 			
 			if (mysqli_stmt_num_rows($stmt) > 0) { // található a db-be
 				
 				$sql = "DELETE FROM `foods` WHERE `foods`.`name` = ?";
 
-				$stmt = mysqli_stmt_init($conn);  //statement init
-				if (!mysqli_stmt_prepare($stmt, $sql)) { // statement error kezelés
+				$stmt = mysqli_stmt_init($conn);  
+				if (!mysqli_stmt_prepare($stmt, $sql)) { 
 					header("Location: ../../deletefood.php?err=sqlerror");
 					exit();
 				} else { // Minden sikeres
 					
 					$name = mb_strtolower($name);
 					
-					mysqli_stmt_bind_param($stmt, "s", $name);  //paraméter adás
-					mysqli_stmt_execute($stmt); // execute
+					mysqli_stmt_bind_param($stmt, "s", $name);
+					mysqli_stmt_execute($stmt);
 					header("Location: ../../deletefood.php?deleted=".$name);
 				    exit();
 				}

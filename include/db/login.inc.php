@@ -1,17 +1,21 @@
 <?php 
 
+// ha login-submit gomb megnyomva, amúgy indexre visz
 if (isset($_POST["login-submit"])) {
+    
     require "db.inc.php";
 
     // POST adatok
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+    // validálás
     if (isEmpty($username) || isEmpty($password)) { 
         header("Location: ../../login.php?err=emptyfields");
         exit();
 
     } else {
+        // usert kiszedjük db-ből
         $sql = "SELECT * FROM users WHERE username=?;";
 
         $stmt = mysqli_stmt_init($conn);   
@@ -36,14 +40,15 @@ if (isset($_POST["login-submit"])) {
                 } else if ($pwdCheck == true) {
                     session_start();    // session start
                     
-                    foreach($row as $col => $data) {    // session data
+                    foreach($row as $col => $data) {    // db data to session data
                         $_SESSION[$col] = $data;
                     }
-                    $_SESSION['f_dailycalorie'] = $row['dailycalorie'];
-                    $_SESSION['f_dailycarbs'] = $row['dailycarbs'];
-                    $_SESSION['f_dailyprotein'] = $row['dailyprotein'];
-                    $_SESSION['f_dailyfat'] = $row['dailyfat'];
-                    $_SESSION['caneat'] = 'true';
+                    // kezdeti értékek
+                    $_SESSION['s_dailycalorie'] = 0;
+                    $_SESSION['s_dailycarbs'] = 0;
+                    $_SESSION['s_dailyprotein'] = 0;
+                    $_SESSION['s_dailyfat'] = 0;
+                    $_SESSION['caneat'] = true;
 
                     header("Location: ../../profile.php");  // and go to the profile page
                     exit();

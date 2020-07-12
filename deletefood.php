@@ -1,5 +1,6 @@
 <?php 
 require "include/header.php";
+// ha bevan jelentkezve
 if (isset($_SESSION['username'])) : 
 ?>
 
@@ -13,12 +14,14 @@ if (isset($_SESSION['username'])) :
     <h1>Delete Food</h1>
 
     <?php
+    // error display
     if (isset($_GET['err'])) {
         switch($_GET['err']) {
             case "emptyfield" : echo '<p class="error">Please fill the field to delete a food.</p>'; break;
             case "notexist" : echo '<p class="error">' . $_GET['name'] . ' not in the database.</p>'; break;
             case "sqlerror" : echo '<p class="error">SQL error.</p>'; break;
         }
+    // sikeres törlés
     } else if (isset($_GET['deleted'])) {
         echo '<p class="success"> ' . $_GET['deleted'] . ' successfully deleted from the database!</p>';
     }

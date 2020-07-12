@@ -1,5 +1,6 @@
 <?php 
 
+// ha megnyomta a signup subit buttont, amugy index-re küldjük
 if(isset($_POST['signup-submit'])) {
 	
 	require 'db.inc.php';
@@ -18,6 +19,8 @@ if(isset($_POST['signup-submit'])) {
 	$idealPercentage = $_POST['ideal-percentage'];
 	
 	// Form validation
+	
+	// empty
 	if (isEmpty($username) || isEmpty($email) || isEmpty($password) || isEmpty($repeatPassword) || isEmpty($birth) || $gender == "-1" || isEmpty($height) || isEmpty($weight) || $activity == "-1" || $ideal == "x" || $idealPercentage == "-1") { // ÜRES MEZŐK
 		header("Location: ../../signup.php?err=emptyfields&username=".$username."&email=".$email."&birth=".$birth."&gender=".$gender."&height=".$height."&weight=".$weight."&activity=".$activity."&ideal=".$ideal."&idealpercentage=".$idealPercentage);
         exit();
@@ -36,6 +39,7 @@ if(isset($_POST['signup-submit'])) {
 		
 	} else { // jó form adatok
 
+		// prepared statment, van-e ilyen username
 		$sql = "SELECT id FROM users WHERE username=?";
 		$stmt = mysqli_stmt_init($conn);
 
@@ -65,34 +69,38 @@ if(isset($_POST['signup-submit'])) {
                         return number_format($number, 2, '.', '');
                     }
 					
+					// lean-body-mass - zsír nélküli testsúly
 					if ($gender == "male") {
 						$lbm = (0.407 * $weight) + (0.267 * $height) - 19.2; 
 					} else {
 						$lbm = (0.252 * $weight) + (0.473 * $height) - 48.3;
 					}
 
-					$bmr = 370 + (21.6 * $lbm);
-					$bodyfatweight = $weight - $lbm;
-					$bodyfatpercentage = ($bodyfatweight / $weight) * 100;
-					$bmi = $weight / (($height / 100) * ($height / 100));
-					$tdee = $bmr * $activity;
+					$bmr = 370 + (21.6 * $lbm);	// basic metabolic rate - nyugodt állapotban energia égetés
+					$bodyfatweight = $weight - $lbm; // testzsír súly
+					$bodyfatpercentage = ($bodyfatweight / $weight) * 100; // testzsír százalék
+					$bmi = $weight / (($height / 100) * ($height / 100)); // body mass index - testtömeg index
+					$tdee = $bmr * $activity; // Total Daily Energy Expenditure - napi kalória égetés
 
+					
 					if ($ideal == 1) {
-						$dailyCalorie = $tdee + ($tdee/100 * $idealPercentage);   
+						$dailyCalorie = $tdee + ($tdee/100 * $idealPercentage);   // hízás
 					} else if ($ideal == -1) {
-							$dailyCalorie = $tdee - ($tdee/100 * $idealPercentage);
+						$dailyCalorie = $tdee - ($tdee/100 * $idealPercentage);	// fogyás
 					} else if ($ideal == 0) {
-							$dailyCalorie = $tdee;
+						$dailyCalorie = $tdee;	// tartás
 					} else {
-							$dailyCalorie = -1;
+						$dailyCalorie = -1;
 					}
 
+					// napi bevitelek
 					$dailyProtein = ($dailyCalorie * 0.4) / 4.1;
 					$dailyFat = ($dailyCalorie * 0.25) / 8.8;
 					$dailyCarbs = ($dailyCalorie * 0.4) / 4.1;
 					$dailySugar = 0;
 					$dailyFiber = 0;
 					
+					// format
 					$bmr = nFormat($bmr);
 					$bmi = nFormat($bmi);
 					$lbm = nFormat($lbm);

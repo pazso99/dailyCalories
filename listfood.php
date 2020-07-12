@@ -10,10 +10,9 @@ if (isset($_SESSION['username'])) :
         <a class ="button" href="./listfood.php">Food data</a>
         <a class ="button" href="#">111111</a>
     </div>
-    <h1>Food data</h1>
+    <h1>Food datas (all food: *)</h1>
 
     <hr class="line">
-    
     <div class="list-food">
         <input type="text" autocomplete="off" placeholder="Search food..." />
         <div class="result">
